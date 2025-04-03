@@ -3,15 +3,15 @@ const UserValidation =[
     body("name")
       .trim()
       .notEmpty().withMessage("Username is required")
-      .isLength({ min: 13 }).withMessage("Username must be at least 3 characters"),
+      .isLength({ min: 3 }).withMessage("Username must be at least 3 characters"),
   
     body("email")
-      .trim()
+      .trim().notEmpty().withMessage("email is required")
       .isEmail().withMessage("Invalid email format"),
   
     body("password")
       .trim()
-      .isLength({ min: 8 }).withMessage("Password must be at least 8 characters"),
+      .isLength({ min: 5 }).withMessage("Password must be at least 8 characters"),
   
     (req, res, next) => {
       const errors = validationResult(req);

@@ -19,14 +19,9 @@ mongoose
   .then(() => console.log('Connected to MongoDB'))
   .catch((err) => console.error('Error connecting to MongoDB', err));
 
-//Routes
-const adminRoutes = require('./routes/admin');
-app.use('/api/admin', adminRoutes);
-
-// Root Route
-app.get("/", (req, res) => {
-  res.send("Welcome to the Express.js app!");
-});
+// Routes
+const routes = require('./routes');
+app.use(routes);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);

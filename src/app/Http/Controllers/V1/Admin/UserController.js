@@ -25,9 +25,12 @@ class UserController {
         }
         try {
             
-            const response =  await Users.create([obj]);
+            // const response =  await Users.create([obj]);
+            const user = new Users(obj);
 
-            res.send(response).status(201);
+            // const hashedPassword = await bcrypt.hash(password, 10);
+            await user.save();
+            res.send(user).status(201);
         } catch ( err ) {
             console.log('err...........', err);
             res.send(res).status(400);
